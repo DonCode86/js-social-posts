@@ -80,7 +80,7 @@ for (let i = 0; i < posts.length; i++) {
             <div class="post__footer">
                 <div class="likes js-likes">
                     <div class="likes__cta">
-                        <a class="like-button  js-like-button" href="#" data-postid="1">
+                        <a class="like-button  js-like-button" href="javascript:void(0)" data-postid="1">
                             <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
                             <span class="like-button__label">Mi Piace</span>
                         </a>
@@ -96,15 +96,21 @@ for (let i = 0; i < posts.length; i++) {
     membersContainer.innerHTML += postsList;
 }
 
-const btn = document.querySelector(".like-button")
-
-btn.addEventListener("click", myFunction);
-
-function myFunction() {
-    btn.classList.add("like-button--liked")
+function toggleItem(elem) {
+    for (let i = 0; i < elem.length; i++) {
+        elem[i].addEventListener("click", function(e) {
+            let current = this;
+            for (var i = 0; i < elem.length; i++) {
+                if (current != elem[i]) {
+                    elem[i].classList.remove('like-button--liked');
+                } else if (current.classList.contains('like-button--liked') === true) {
+                    current.classList.remove('like-button--liked');
+                } else {
+                    current.classList.add('like-button--liked')
+                }
+            }
+            e.preventDefault();
+        });
+    };
 }
-
-// function myFunction() {
-//     const likeCounter = document.querySelector(".js-likes-counter")
-//     likeCounter = likeCounter + 1
-// }
+toggleItem(document.querySelectorAll('.like-button'));
