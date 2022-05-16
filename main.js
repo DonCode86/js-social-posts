@@ -37,7 +37,7 @@ const posts = [{
         "media": "https://unsplash.it/600/400?image=24",
         "author": {
             "name": "Luca Formicola",
-            "image": null
+            "image": "https://unsplash.it/300/300?image=26"
         },
         "likes": 56,
         "created": "2021-04-03"
@@ -56,6 +56,7 @@ const posts = [{
 ];
 
 const membersContainer = document.querySelector(".posts-list")
+
 
 for (let i = 0; i < posts.length; i++) {
     console.log(posts[i])
@@ -94,3 +95,16 @@ for (let i = 0; i < posts.length; i++) {
 
     membersContainer.innerHTML += postsList;
 }
+
+const btn = document.querySelector(".like-button")
+
+btn.addEventListener("click", myFunction);
+
+function myFunction() {
+    btn.classList.add("like-button--liked")
+}
+
+// function myFunction() {
+//     const likeCounter = document.querySelector(".js-likes-counter")
+//     likeCounter = likeCounter + 1
+// }
